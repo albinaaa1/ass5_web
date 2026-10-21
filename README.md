@@ -2,7 +2,7 @@
 
 **Student Name:** Onglassyn Albina 
 **Group:** [SE-2527]   
-**Live Demo:** [Insert your GitHub Pages or Netlify URL here]
+**Live Demo:** [https://albinaaa1.github.io/ass5_web/]
 
 ---
 
