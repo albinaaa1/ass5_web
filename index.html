@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment #5: JS Basics (DOM & Events)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Header with Navbar -->
+    <header>
+      <div class="brand">
+        <h1>Assignment #5</h1>
+        <div class="student-badge">
+          Student: <strong>Onglassyn Albina</strong>
+        </div>
+      </div>
+
+      <nav class="navbar">
+        <button class="nav-btn active" onclick="switchTab('part1', event)">Part 1</button>
+        <button class="nav-btn" onclick="switchTab('part2', event)">Part 2</button>
+        <button class="nav-btn" onclick="switchTab('part3', event)">Part 3</button>
+        <button class="nav-btn" onclick="switchTab('part4', event)">Part 4 (To-Do App)</button>
+      </nav>
+    </header>
+
+    <!-- PART 1: JS Basics -->
+    <div id="part1" class="tab-content active">
+      <div class="card">
+        <h2 class="card-title"><span>Task 0 & 1:</span> JS Fundamentals & Console Output</h2>
+        <p style="color: var(--text-muted); margin-bottom: 1rem;">
+          Demonstrating <code>console.log()</code>, variables (string, number, boolean), arithmetic operations, and string concatenation.
+        </p>
+
+        <button class="btn" onclick="runTask0Alert()">Trigger Task 0 Alert</button>
+
+        <div class="terminal" id="terminal-output">
+          <div class="terminal-line"><span class="terminal-prefix">console > </span>[System Initialized]</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PART 2: DOM Manipulation -->
+    <div id="part2" class="tab-content">
+      <div class="card">
+        <h2 class="card-title"><span>Task 2:</span> Changing Content</h2>
+        <p id="target-paragraph" style="font-size: 1.1rem; margin-bottom: 1rem;">
+          This is the original paragraph text before modification.
+        </p>
+        <button class="btn" onclick="changeContent()">Change Paragraph Text</button>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title"><span>Task 3:</span> Changing Styles</h2>
+        <div id="style-box" class="interactive-box">
+          Dynamic Style Container
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="btn btn-secondary" onclick="toggleBoxColor()">Toggle Background</button>
+          <button class="btn btn-secondary" onclick="toggleBoxFont()">Toggle Font Size</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title"><span>Task 4:</span> Dynamic Elements</h2>
+        <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+          <button class="btn" onclick="addItem()">Add Item</button>
+          <button class="btn btn-danger" onclick="removeItem()">Remove Item</button>
+        </div>
+        <ul id="dynamic-list" class="dynamic-list">
+          <li>Initial List Item #1</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PART 3: Events -->
+    <div id="part3" class="tab-content">
+      <div class="card">
+        <h2 class="card-title"><span>Task 5:</span> Mouse Events</h2>
+        <div id="mouse-box" class="interactive-box">
+          Hover over this box
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title"><span>Task 6:</span> Keyboard Events</h2>
+        <div class="input-group">
+          <label for="keyboard-input">Type something to trigger keyup:</label>
+          <input type="text" id="keyboard-input" placeholder="Start typing...">
+        </div>
+        <p style="font-size: 0.95rem;">
+          Live Preview: <strong id="keyboard-output" style="color: var(--accent-secondary);">-</strong>
+        </p>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title"><span>Task 7:</span> Interactive Calculator</h2>
+        <div class="calc-grid">
+          <div class="input-group">
+            <label>Number 1</label>
+            <input type="number" id="calc-num1" value="10">
+          </div>
+          <div class="input-group">
+            <label>Number 2</label>
+            <input type="number" id="calc-num2" value="5">
+          </div>
+        </div>
+
+        <div class="calc-ops">
+          <button class="btn btn-secondary" onclick="calculate('+')">+</button>
+          <button class="btn btn-secondary" onclick="calculate('-')">-</button>
+          <button class="btn btn-secondary" onclick="calculate('*')">×</button>
+          <button class="btn btn-secondary" onclick="calculate('/')">÷</button>
+        </div>
+
+        <div style="background: rgba(15, 23, 42, 0.5); padding: 1rem; border-radius: 10px; border: 1px solid var(--card-border);">
+          Calculation Result: <strong id="calc-result" style="color: var(--accent-success); font-size: 1.2rem; margin-left: 0.5rem;">15</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- PART 4: Mini Project (To-Do App) -->
+    <div id="part4" class="tab-content">
+      <div class="card">
+        <h2 class="card-title"><span>Task 8:</span> To-Do App Mini Project</h2>
+
+        <div class="todo-layout">
+          <div>
+            <h3 style="font-size: 1.1rem; margin-bottom: 1rem;">To-do list</h3>
+            <div id="todo-list-container">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <div style="background: rgba(15, 23, 42, 0.4); border: 1px solid var(--card-border); padding: 1.5rem; border-radius: 16px;">
+            <h3 style="font-size: 1.1rem; margin-bottom: 1.2rem;">Add new task</h3>
+
+            <div class="input-group">
+              <label>* Title</label>
+              <input type="text" id="todo-title-input" placeholder="Assignment 6">
+            </div>
+
+            <div class="input-group">
+              <label>* Description</label>
+              <textarea id="todo-desc-input" placeholder="Complete assignment on time"></textarea>
+            </div>
+
+            <button class="btn" style="width: 100%;" onclick="addTodo()">Add task</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
