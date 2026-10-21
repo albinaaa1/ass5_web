@@ -63,7 +63,7 @@ my-js-assignment/
 
 This project is deployed and accessible via **GitHub Pages / Netlify**:
 
-👉 **[Link to Live Project](https://www.google.com/search?q=https://your-username.github.io/my-js-assignment/)**
+👉 **[Link to Live Project](https://github.com/albinaaa1/ass5_web)**
 
 ---
 
